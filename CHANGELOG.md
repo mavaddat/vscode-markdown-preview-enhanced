@@ -7,6 +7,277 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.15] - 2024-09-07
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.11](https://github.com/shd101wyy/crossnote/releases/tag/0.9.11).
+
+### Changes
+
+- Enabled the preview zen mode by default.
+
+### Updates
+
+- Updated `mermaid` version to the latest `11.4.0`.
+
+## [0.8.14] - 2024-09-07
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.10](https://github.com/shd101wyy/crossnote/releases/tag/0.9.10).
+
+### Changes
+
+- Added `.mdx` to the default `markdownFileExtensions`.
+
+### Updates
+
+- Updated `mermaid` version to the latest `11.1.1`.
+- Updated `katex` version to the latest `v0.16.11`.
+
+### Bug fixes
+
+- Fixed a scroll sync bug.
+
+## [0.8.13] - 2024-03-18
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.9](https://github.com/shd101wyy/crossnote/releases/tag/0.9.9).
+
+### Bug fixes
+
+- Fixed [a bug of link redirection in preview](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1951) by @byte-clown
+- Fixed [Long sidebarToc does not display completely](https://github.com/shd101wyy/crossnote/pull/354) by @moonlitusun
+- Removed the `text` as the default language selector for code block.
+
+### Chore
+
+- Updated [flake.nix](./flake.nix) and node.js to 20.
+
+## [0.8.12] - 2024-03-10
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.8](https://github.com/shd101wyy/crossnote/releases/tag/0.9.8).
+
+### New features
+
+- @moonlitusun sidebarToc supports local caching
+
+### Updates
+
+- @oneWaveAdrian updated the `mermaid` version to the latest `10.9.0`.
+
+### Bug fixes
+
+- Fixed [[BUG] #tag is treated as Header 1](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1937)
+- Fixed [[BUG] toml code block support is not very good](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1920)
+- Fixed [[BUG] If URL encoding is used, the preview cannot be displayed.](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1934)
+
+## [0.8.11] - 2023-12-10
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.7](https://github.com/shd101wyy/crossnote/releases/tag/0.9.7).
+
+### New features
+
+- Added `enablePreviewZenMode` option and reorganized the right-click context menu.
+
+  ![image](https://github.com/shd101wyy/crossnote/assets/1908863/26e2237e-c6e2-433e-a063-6de2c01a64bb)
+
+### Bug fixes
+
+- Fixed rendering `vega-lite` in `Reveal.js` slide: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1880
+- Removed one github-dark background css attribute: https://github.com/shd101wyy/crossnote/issues/344
+
+## [0.8.10] - 2023-10-26
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.6](https://github.com/shd101wyy/crossnote/releases/tag/0.9.6).
+
+### Changes
+
+- Updated mermaid.js to the latest version 10.6.0.
+
+### Bug fixes
+
+- Fixed importing file with spaces in the path: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1857
+- Fixed a bug of updating the vscode `workbench.editorAssociations`: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1860
+
+## [0.8.9] - 2023-10-23
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.5](https://github.com/shd101wyy/crossnote/releases/tag/0.9.5).
+
+### Bug fixes
+
+- Fixed of bug of rendering the KaTeX math expression: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1853
+
+## [0.8.8] - 2023-10-22
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.4](https://github.com/shd101wyy/crossnote/releases/tag/0.9.4).
+
+### New features
+
+- Updated [fontawesome](https://fontawesome.com/) from version 4.7 to version 6.4.2 (Free).  
+  A list of available icons can be found at: https://kapeli.com/cheat_sheets/Font_Awesome.docset/Contents/Resources/Documents/index
+- Updated WaveDrom to the latest version 3.3.0.
+
+### Changes
+
+- Changed the markdown parser process to be like below. We removed the `onWillTransformMarkdown` and `onDidTransformMarkdown` hooks as these two caused the confusion.
+
+  ```markdown
+  markdown
+  ↓
+  `onWillParseMarkdown(markdown)`
+  ↓
+  markdown
+  ↓
+  **crossnote markdown transformer**
+  ↓
+  markdown
+  ↓
+  **markdown-it or pandoc renderer**
+  ↓
+  html
+  ↓
+  `onDidParseMarkdown(html)`
+  ↓
+  html, and then rendered in the preview
+  ```
+
+- (Beta) Supported to export the selected element in preview to .png file and copy the blob to the clipboard:
+
+  ![image](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/assets/1908863/046759d8-6d89-4f41-8420-b863d2094fe7)
+
+### Bug fixes
+
+- Fixed a bug of importing files that contains empty heading: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1840
+- Fixed a bug of rendering inline math in image name: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1846
+- Fixed a bug of parsing inline code: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1848
+
+## [0.8.7] - 2023-10-15
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.2](https://github.com/shd101wyy/crossnote/releases/tag/0.9.2) and version [0.9.3](https://github.com/shd101wyy/crossnote/releases/tag/0.9.3).
+
+### New features
+
+- Added `ID` button to copy the element id to clipboard:
+
+  ![Screenshot from 2023-10-15 15-34-27](https://github.com/shd101wyy/crossnote/assets/1908863/ede91390-3cca-4b83-8e30-33027bf0a363)
+
+- Supported to import section of markdown by header id:
+
+  ```markdown
+  @import "test.md#header-id"
+
+  or
+
+  ![](test.md#header-id)
+
+  or
+
+  ![[test#header-id]]
+  ```
+
+### Bug fixes
+
+- URL fragments on image links do not load: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1837
+- Supported matplotlib-type preview for other Python tools like `pipenv`: https://github.com/shd101wyy/crossnote/issues/332
+- Fixed jump to header from link like `[link](test.md#header-id)`.
+- Better handling of source map for importing files.
+
+## [0.8.6] - 2023-10-14
+
+This MPE version reduced the VS Code version requirement to 1.70.0 or above.
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.9.0](https://github.com/shd101wyy/crossnote/releases/tag/0.9.0) and [0.9.1](https://github.com/shd101wyy/crossnote/releases/tag/0.9.1).
+
+### New features
+
+- Added two more syntaxes to import files in addition to the `@import` syntax. Please note that these syntaxes only work on new lines. For example, they won't work within list items.
+  - Use the image syntax but with other file extensions:
+    ```markdown
+    ![](path/to/file.md)
+    ![](path/to/test.py){.line-numbers}
+    ![](path/to/test.js){code_block=true}
+    ```
+  - Use the wikilink syntax but with other file extensions:
+    ```markdown
+    ![[file]]
+    ![[path/to/test.py]]{.line-numbers}
+    ![[path/to/test.js]]{code_block=true}
+    ```
+
+### Bug fixes
+
+- Fixed a header id generation bug https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1833
+- Fixed parsing block attributes from curly bracket when `enableTypographer` is enabled https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1823
+- Fixed the bug of not rendering the `@import` file:
+  - https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1832
+  - https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1834
+- Fixed rendering `vega` and `vega-lite`. Also fixed `interactive=true` attribute for `vega`.
+
+## [0.8.5] - 2023-10-10
+
+Please note this version requires VS Code 1.82.0 or above.
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.8.24](https://github.com/shd101wyy/crossnote/releases/tag/0.8.24).
+
+### Bug fixes
+
+- Improved the handling of `[toc]`: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1825
+- Supported to set env variables in paths of configuration: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1826
+- Fixed the footer style: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1822
+- Fixed the bug of generating the header id: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1827
+- Fixed the bug of `@import` files that contains unicode characters: https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1823
+- Now use node.js 18 for the project.
+
+## [0.8.4] - 2023-10-10
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.8.23](https://github.com/shd101wyy/crossnote/releases/tag/0.8.23).
+
+### Bug fixes
+
+- Fixed exporting reveal.js presentation.
+
+## [0.8.3] - 2023-10-10
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.8.22](https://github.com/shd101wyy/crossnote/releases/tag/0.8.22).
+
+### Bug fixes
+
+- Fixed a bug of loading image https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1819
+- Fixed a bug of parsing slides https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1818
+
+## [0.8.2] - 2023-10-09
+
+Special Thanks to [@mavaddat](https://github.com/mavaddat) for creating the awesome extension logo for MPE in this [pull request](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/pull/1808) 🎉 We finally have a beautiful logo for MPE.
+
+Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.8.20](https://github.com/shd101wyy/crossnote/releases/tag/0.8.20) and [0.8.21](https://github.com/shd101wyy/crossnote/releases/tag/0.8.21).
+
+### New features
+
+- Supported prefix in front of Kroki diagram types https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1785.  
+  So now all diagrams below will get rendered using Kroki:
+
+  ````markdown
+  ```kroki-plantuml
+  @startuml
+  A -> B
+  @enduml
+  ```
+
+  ```plantuml {kroki=true}
+  @startuml
+  A -> B
+  @enduml
+  ```
+  ````
+
+- Improved the source map handling for `@import "..."` syntax.
+
+### Bug fixes
+
+- Exporting files no longer includes the source map.
+- Fixed some Reveal.js presentation related bugs:
+  - https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1815
+  - https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/1814
+- Both the `style.less` from `Markdown Preview Enhanced: Customize Css (Global)` and the `style.less` from `Markdown Preview Enhanced: Customize Css (Workspace)` will now be loaded. The `style.less` from `Markdown Preview Enhanced: Customize Css (Workspace)` will have higher priority.
+- Fixed the bug where deleting config files from workspace did not update the preview.
+
 ## [0.8.1] - 2023-10-06
 
 Updated [crossnote](https://github.com/shd101wyy/crossnote) to version [0.8.19](https://github.com/shd101wyy/crossnote/releases/tag/0.8.19).

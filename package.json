@@ -1,7 +1,7 @@
 {
   "name": "markdown-preview-enhanced",
   "displayName": "%displayName%",
-  "version": "0.8.1",
+  "version": "0.8.15",
   "description": "%description%",
   "icon": "media/mpe.png",
   "categories": [
@@ -587,13 +587,19 @@
             ".mkdn",
             ".mkd",
             ".rmd",
-            ".qmd"
+            ".qmd",
+            ".mdx"
           ],
           "type": "array"
         },
         "markdown-preview-enhanced.alwaysShowBacklinksInPreview": {
           "description": "Always show backlinks in preview.",
           "default": false,
+          "type": "boolean"
+        },
+        "markdown-preview-enhanced.enablePreviewZenMode": {
+          "description": "Enable this option will hide unnecessary UI elements in preview unless your mouse is over it.",
+          "default": true,
           "type": "boolean"
         }
       }
@@ -675,14 +681,14 @@
     "@types/crypto-js": "^4.1.2",
     "@types/vfile": "^3.0.2",
     "async-mutex": "^0.4.0",
-    "crossnote": "^0.8.19",
-    "crypto-js": "^4.1.1"
+    "crossnote": "^0.9.11",
+    "crypto-js": "^4.2.0"
   },
   "devDependencies": {
     "@types/cheerio": "0.22.11",
     "@types/mocha": "^5.2.5",
     "@types/node": "16",
-    "@types/vscode": "1.80.0",
+    "@types/vscode": "1.70.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "@vscode/test-web": "^0.0.45",
@@ -703,6 +709,7 @@
     "webpack-cli": "^5.1.4"
   },
   "engines": {
-    "vscode": "^1.80.0"
-  }
+    "vscode": "^1.70.0"
+  },
+  "icon": "media/mpe.png"
 }
